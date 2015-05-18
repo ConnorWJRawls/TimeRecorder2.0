@@ -18,7 +18,7 @@ public class RecorderMain {
 	
 	private static String defaultPath = ".";
 	
-	private static String startOptions =  "\nOptions:\n1: Load names from roster\n2: Load saved XML data\n3: Load Legacy Data\n?: See options again\nv: Version Number\nx: Exit Program\n";
+	private static String startOptions =  "\nOptions:\n1: Load names from roster\n2: Load saved XML data\n?: See options again\nv: Version Number\nx: Exit Program\n";
 	
 	private static String mainOptions = "\nOptions\n1: Add a Swimmer\n2: Edit a Swimmer\n3: Find and Edit a Swimmer by Name\n4: Remove a Swimmer\n5: Change Date\n6: Save\n7: Save As\n8: Export Time Sheet\n9: Export Swimmer Details\n0: Export to XML\nl: Show Swimmer List\nh: Show file type help\n?: Show Options\nx: Exit\n";
 	
@@ -81,23 +81,6 @@ public class RecorderMain {
 				updateStatus(SwimmerMasterList.getSwimmer(0).getHeader());
 				defaultPath = bpath;
 				break;
-			case '3':
-				updateStatus("Loading from a legacy database\n");
-				updateStatus("Please enter file with filepath for database");
-				String cpath = scan.next();
-				File cFile = new File(cpath);
-				DataImporter.importFromSerial(cFile);
-				if(SwimmerMasterList.getSwimmer(0).getHeader().equals(""))
-				{
-					updateStatus("Please enter header for this data:");
-					String header = compileHeader(scan);
-					addHeadertoSwimmers(header);
-					
-				}
-				updateStatus(SwimmerMasterList.getSwimmer(0).getHeader());
-				defaultPath = cpath.substring(0, cpath.length() - 3) + "xml";
-				updateLegacyData();
-				break;
 			case '?':
 				printStartingOptions();
 				break;
@@ -110,16 +93,6 @@ public class RecorderMain {
 			}
 		}
 		
-	}
-	
-	private static void updateLegacyData()
-	{
-		ArrayList<Swimmer> swimmers = SwimmerMasterList.getList();
-		
-		for(int i = 0; i < swimmers.size(); i++)
-		{
-			swimmers.get(i).updateLegacyData();
-		}
 	}
 	
 	public static void getDateandFile()
