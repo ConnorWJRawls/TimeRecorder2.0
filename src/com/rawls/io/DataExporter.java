@@ -31,7 +31,7 @@ import org.apache.fop.fonts.apps.PFMReader;
 
 public class DataExporter {
 	
-	public static final String NEWLINE = System.lineSeparator();
+	public static final String NEWLINE = "\n";
 	
 	private static XStream xstream = new XStream();
 	
