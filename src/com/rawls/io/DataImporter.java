@@ -7,6 +7,7 @@ import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import com.rawls.data.Record;
 import com.rawls.data.Swimmer;
 import com.rawls.main.RecorderMain;
 import com.rawls.storage.SwimmerMasterList;
